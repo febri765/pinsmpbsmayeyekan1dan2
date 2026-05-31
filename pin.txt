@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengambilan PIN SMA YEYEKAN 1 DAN 2</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    width:90%;
+    max-width:450px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+}
+
+input,select,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    background:#2196f3;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1976d2;
+}
+
+#hasil{
+    margin-top:20px;
+    display:none;
+    background:#e8f5e9;
+    padding:15px;
+    border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Pengambilan PIN SPMB SMA YEYEKAN 1 DAN 2 2026/2027</h2>
+
+<select id="sekolah">
+<option value="">Pilih SMA</option>
+<option>SMA Yeyekan 1</option>
+<option>SMA Yeyekan 2</option>
+</select>
+
+<input type="text" id="nama" placeholder="Nama Lengkap">
+
+<input type="text" id="nisn" placeholder="NISN">
+
+<select id="jalur">
+<option value="">Pilih Jalur</option>
+<option>Domisili</option>
+<option>Prestasi</option>
+<option>Afirmasi</option>
+<option>Mutasi</option>
+<option>prestasi seks</option>
+</select>
+
+<button onclick="ambilPIN()">Ambil PIN</button>
+
+<div id="hasil"></div>
+</div>
+
+<script>
+function ambilPIN(){
+
+let sekolah=document.getElementById("sekolah").value;
+let nama=document.getElementById("nama").value;
+let nisn=document.getElementById("nisn").value;
+let jalur=document.getElementById("jalur").value;
+
+if(sekolah=="" || nama=="" || nisn=="" || jalur==""){
+alert("Lengkapi data terlebih dahulu!");
+return;
+}
+
+let pin="PIN-"+Math.floor(100000+Math.random()*900000);
+
+document.getElementById("hasil").style.display="block";
+document.getElementById("hasil").innerHTML=`
+<h3>PIN Berhasil Dibuat</h3>
+<p><b>Sekolah:</b> ${sekolah}</p>
+<p><b>Nama:</b> ${nama}</p>
+<p><b>NISN:</b> ${nisn}</p>
+<p><b>Jalur:</b> ${jalur}</p>
+<p><b>PIN:</b> ${pin}</p>
+`;
+}
+</script>
+
+</body>
+</html>
